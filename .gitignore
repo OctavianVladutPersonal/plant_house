@@ -1,0 +1,21 @@
+# .gitignore
+
+# API Keys (keep these private!)
+# Note: Remember to add your actual config files if you commit them
+# firebase-config.js should have placeholders in the repo
+
+# Dependencies
+node_modules/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log

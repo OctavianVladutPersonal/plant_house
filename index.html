@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantHouse - My Plant Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌿 PlantHouse</h1>
+            <p>Identify and manage your plant collection</p>
+        </header>
+
+        <section class="upload-section">
+            <h2>Add New Plant</h2>
+            <div class="upload-controls">
+                <input type="file" id="photoInput" accept="image/*" capture="environment">
+                <label for="photoInput" class="btn-upload">
+                    📷 Take/Upload Photo
+                </label>
+                <button id="identifyBtn" class="btn-primary" disabled>
+                    🔍 Identify Plant
+                </button>
+            </div>
+            <div id="previewContainer" class="preview-container"></div>
+            <div id="identificationResult" class="identification-result"></div>
+        </section>
+
+        <section class="plants-section">
+            <h2>My Plants</h2>
+            <div id="plantsTable" class="plants-table">
+                <div class="loading">No plants added yet. Start by identifying your first plant!</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
