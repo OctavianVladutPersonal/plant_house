@@ -1,8 +1,6 @@
 // Firebase Configuration
 // TODO: Replace with your Firebase project credentials
 // Get these from Firebase Console: Project Settings > General > Your apps > Web app
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKlzm9Om4oMAoG2z5-g7aqGVnazpyeTc4",
@@ -14,7 +12,7 @@ const firebaseConfig = {
   measurementId: "G-846KQJ3T7B"
 };
 
-// Initialize Firebase
+// Initialize Firebase (using compat version)
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
