@@ -159,6 +159,16 @@ async function savePlant() {
     if (!identifiedPlantData) return;
 
     try {
+        // Check for duplicates by scientific name
+        const existingPlants = await db.collection('plant-house')
+            .where('name', '==', identifiedPlantData.name)
+            .get();
+
+        if (!existingPlants.empty) {
+            identificationResult.innerHTML = '<div class="error">⚠️ This plant is already in your collection!</div>';
+            return;
+        }
+
         const plantDetails = generatePlantDetails(identifiedPlantData);
 
         const plantDoc = {
