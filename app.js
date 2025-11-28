@@ -163,7 +163,7 @@ async function savePlant() {
             addedAt: firebase.firestore.FieldValue.serverTimestamp()
         };
 
-        await db.collection('plants-house').add(plantDoc);
+        await db.collection('plant-house').add(plantDoc);
 
         identificationResult.innerHTML = '<div class="success">✅ Plant saved to your collection!</div>';
         
@@ -214,7 +214,7 @@ function generatePlantDetails(plant) {
 // Load plants from Firebase
 async function loadPlants() {
     try {
-        const snapshot = await db.collection('plants-house')
+        const snapshot = await db.collection('plant-house')
             .orderBy('addedAt', 'desc')
             .get();
 
@@ -267,7 +267,7 @@ async function deletePlant(plantId) {
     if (!confirm('Are you sure you want to remove this plant?')) return;
 
     try {
-        await db.collection('plants-house').doc(plantId).delete();
+        await db.collection('plant-house').doc(plantId).delete();
         loadPlants();
     } catch (error) {
         console.error('Error deleting plant:', error);
