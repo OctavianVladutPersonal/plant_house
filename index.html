@@ -16,9 +16,13 @@
         <section class="upload-section">
             <h2>Add New Plant</h2>
             <div class="upload-controls">
-                <input type="file" id="photoInput" accept="image/*" capture="environment">
-                <label for="photoInput" class="btn-upload">
-                    📷 Take/Upload Photo
+                <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;">
+                <input type="file" id="galleryInput" accept="image/*" style="display: none;">
+                <label for="cameraInput" class="btn-upload">
+                    📷 Take Photo
+                </label>
+                <label for="galleryInput" class="btn-upload">
+                    🖼️ Choose from Gallery
                 </label>
                 <button id="identifyBtn" class="btn-primary" disabled>
                     🔍 Identify Plant

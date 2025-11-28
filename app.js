@@ -9,14 +9,16 @@ let selectedFile = null;
 let identifiedPlantData = null;
 
 // DOM Elements
-const photoInput = document.getElementById('photoInput');
+const cameraInput = document.getElementById('cameraInput');
+const galleryInput = document.getElementById('galleryInput');
 const identifyBtn = document.getElementById('identifyBtn');
 const previewContainer = document.getElementById('previewContainer');
 const identificationResult = document.getElementById('identificationResult');
 const plantsTable = document.getElementById('plantsTable');
 
 // Event Listeners
-photoInput.addEventListener('change', handlePhotoSelect);
+cameraInput.addEventListener('change', handlePhotoSelect);
+galleryInput.addEventListener('change', handlePhotoSelect);
 identifyBtn.addEventListener('click', identifyPlant);
 
 // Initialize
@@ -54,7 +56,8 @@ function displayPreview(file) {
 function clearPreview() {
     selectedFile = null;
     previewContainer.innerHTML = '';
-    photoInput.value = '';
+    cameraInput.value = '';
+    galleryInput.value = '';
     identifyBtn.disabled = true;
     identificationResult.innerHTML = '';
     identifiedPlantData = null;
@@ -86,7 +89,11 @@ async function identifyPlant() {
         formData.append('images', selectedFile);
         formData.append('organs', 'auto'); // auto-detect plant organ (leaf, flower, etc.)
 
-        const response = await fetch(`https://my-api.plantnet.org/v2/identify/${PLANTNET_PROJECT}?api-key=${PLANTNET_API_KEY}&include-related-images=true`, {
+        // Use CORS proxy to bypass CORS restrictions
+        const apiUrl = `https://my-api.plantnet.org/v2/identify/${PLANTNET_PROJECT}?api-key=${PLANTNET_API_KEY}&include-related-images=true`;
+        const corsProxy = 'https://corsproxy.io/?';
+        
+        const response = await fetch(corsProxy + encodeURIComponent(apiUrl), {
             method: 'POST',
             body: formData
         });
